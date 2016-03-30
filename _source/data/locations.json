@@ -1,0 +1,32 @@
+[
+  {
+    "locationID" : "4",
+    "address"    : "6987 University Ave",
+    "city"       : "La Mesa",
+    "state"      : "CA",
+    "zip"        : "91941",
+    "phone"      : "6194691639",
+    "latitude"   : "32.755029",
+    "longitude"  : "-117.047380"
+  },
+  {
+    "locationID" : "7",
+    "address"    : "393 W Main St",
+    "city"       : "El Cajon",
+    "state"      : "CA",
+    "zip"        : "92020",
+    "phone"      : "6194472520",
+    "latitude"   : "32.794543",
+    "longitude"  : "-116.965756"
+  },
+  {
+    "locationID" : "71",
+    "address"    : "1655 Capalina Rd",
+    "city"       : "San Marcos",
+    "state"      : "CA",
+    "zip"        : "92069",
+    "phone"      : "7607449144",
+    "latitude"   : "33.151453",
+    "longitude"  : "-117.196504"
+  }
+]

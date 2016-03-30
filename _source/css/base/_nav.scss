@@ -1,0 +1,17 @@
+nav{
+  padding: ($gutter / 2) $gutter;
+
+  .logo{
+    display: block;
+    float: left;
+    height: 60px;
+  }
+
+  a{
+    display: block;
+    padding: $gutter;
+    float: left;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+}

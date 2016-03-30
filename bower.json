@@ -1,0 +1,22 @@
+{
+  "name": "store-locator",
+  "description": "Simple Google Maps based store-locator",
+  "main": "index.js",
+  "authors": [
+    "Patrick Sullivan <psullivan6@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "js-store-locator": "https://github.com/googlemaps/js-store-locator.git#fa125dcf444ee370b93c2b72f1e2897ae9f8255b"
+  }
+}
