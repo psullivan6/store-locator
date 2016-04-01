@@ -1,4 +1,26 @@
 #locations-list{
+  overflow: auto;
   height: 30%;
-  background-color: #ccc;
+
+  .store-list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li{
+      padding: $gutter;
+      border-bottom: 1px solid #ccc;
+      border-left: 0 solid $red;
+      transition: border 0.2s ease;
+
+      &:hover{
+        cursor: pointer;
+        border-left-width: 10px;
+      }
+    }
+  }
+
+  .address{
+    span{ display: block; }
+  }
 }
