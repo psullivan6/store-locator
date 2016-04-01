@@ -2,6 +2,9 @@
 
   window.onload = function(){
 
+    // =========================================================================
+    // Functions
+    // =========================================================================
     function parseStores(data){
       var stores = [];
 
@@ -22,12 +25,19 @@
       listView.searchPosition(locationsSearchValue);
     };
 
+    // =========================================================================
+    // Configuration Variables
+    // =========================================================================
+    var defaultCoordinates = [39.5, -105]; // USA center, slightly favoring the west coast
+
+    // 37.0902, 95.7129
+
     var $map  = document.getElementById('locations-map');
     var $list = document.getElementById('locations-list');
 
     var map = new google.maps.Map($map, {
-      center: new google.maps.LatLng(32.9, -117.1),
-      zoom: 10,
+      center: new google.maps.LatLng(defaultCoordinates[0], defaultCoordinates[1]),
+      zoom: 4,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 

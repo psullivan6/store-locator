@@ -28,5 +28,35 @@
     "phone"      : "7607449144",
     "latitude"   : "33.151453",
     "longitude"  : "-117.196504"
+  },
+  {
+    "locationID" : "7105",
+    "address"    : "921 S E Powell Blvd",
+    "city"       : "Portland",
+    "state"      : "OR",
+    "zip"        : "97202",
+    "phone"      : "5032308930",
+    "latitude"   : "45.501546",
+    "longitude"  : "-122.656512"
+  },
+  {
+    "locationID" : "7112",
+    "address"    : "19110 Se Stark St",
+    "city"       : "Portland",
+    "state"      : "OR",
+    "zip"        : "97233",
+    "phone"      : "5036675393",
+    "latitude"   : "45.518938",
+    "longitude"  : "-122.466145"
+  },
+  {
+    "locationID" : "7122",
+    "address"    : "500 Se 105th Ave",
+    "city"       : "Portland",
+    "state"      : "OR",
+    "zip"        : "97216",
+    "phone"      : "5034081519",
+    "latitude"   : "45.51896",
+    "longitude"  : "-122.555534"
   }
 ]

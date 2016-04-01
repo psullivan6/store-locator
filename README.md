@@ -1,6 +1,13 @@
 # Store Locator
 Based off Google Maps' Store Locator [code](https://github.com/googlemaps/js-store-locator)
 
+## General Notes
+
+* Use the [`searchPosition` method](https://googlemaps.github.io/js-store-locator/reference.html#storeLocator.Panel) of the `Panel` class to search via an input that's not part of the default list Panel view
+
+
+
+
 
 
 ## Playground Repo Notes:
