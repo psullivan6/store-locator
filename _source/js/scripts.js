@@ -1,21 +1,27 @@
 (function(window){
 
-  function parseStores(data){
-    var stores = [];
+  window.onload = function(){
 
-    for (var i = 0, dataLength = data.length; i < dataLength; i++){
-      var locationData = data[i];
+    function parseStores(data){
+      var stores = [];
 
-      var latLng = new google.maps.LatLng(locationData.latitude, locationData.longitude);
-      var store  = new storeLocator.Store('location_' + locationData.locationID, latLng, null);
+      for (var i = 0, dataLength = data.length; i < dataLength; i++){
+        var locationData = data[i];
 
-      stores.push(store);
-    }
+        var latLng = new google.maps.LatLng(locationData.latitude, locationData.longitude);
+        var store  = new storeLocator.Store('location_' + locationData.locationID, latLng, null);
 
-    return stores;
-  };
+        stores.push(store);
+      }
 
-  google.maps.event.addDomListener(window, 'load', function() {
+      return stores;
+    };
+
+    function locationsSearch(event){
+      var locationsSearchValue = document.getElementById('locations-search--input').value;
+      listView.searchPosition(locationsSearchValue);
+    };
+
     var $map  = document.getElementById('locations-map');
     var $list = document.getElementById('locations-list');
 
@@ -34,14 +40,18 @@
       data.setStores(stores);
     });
 
-    var view = new storeLocator.View(map, data, {
-      geolocation: false
+    var mapView = new storeLocator.View(map, data, {
+      geolocation: false,
+      updateOnPan: true
       // features: data.getFeatures()
     });
 
-    new storeLocator.Panel($list, {
-      view: view
+    var listView = new storeLocator.Panel($list, {
+      view: mapView
     });
-  });
+
+    document.getElementById('locations-search--submit').addEventListener('click', locationsSearch, false);
+
+  };
 
 })(window)
