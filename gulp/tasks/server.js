@@ -4,7 +4,7 @@ var gulp    = require('gulp');
 var utility = require('gulp-util');
 require('colors');
 
-var PORT = '1030';
+var PORT = '8000';
 
 gulp.task('server', function(callback){
   var app = express();

@@ -17,6 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "js-store-locator": "https://github.com/googlemaps/js-store-locator.git#fa125dcf444ee370b93c2b72f1e2897ae9f8255b"
+    "js-store-locator": "git://github.com/struck/js-store-locator.git#e04c779",
+    "js-marker-clusterer": "git://github.com/googlemaps/js-marker-clusterer.git#gh-pages"
   }
 }

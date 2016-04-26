@@ -12,7 +12,11 @@ Based off Google Maps' Store Locator [code](https://github.com/googlemaps/js-sto
     - store locator plugin
 
 
+## Dependencies
 
+Forked version of `js-store-locator` installed via bower and the latest commit
+hash:    
+`bower install 'git://github.com/struck/js-store-locator.git#LATEST_HASH' --save`
 
 
 ## Playground Repo Notes:
@@ -40,3 +44,9 @@ Based off Google Maps' Store Locator [code](https://github.com/googlemaps/js-sto
     - `cache-require-paths`
     - `gulp-util`
     - `require-dir`
+
+# TO-DO
+
+- geolocation denied callback / loader
+- style the left panel
+- style the map
