@@ -31,10 +31,6 @@
       listView.searchPosition(locationsSearchValue);
     };
 
-    function StaticLocations(){
-
-    };
-
     // =========================================================================
     // Configuration
     // =========================================================================
@@ -43,204 +39,200 @@
     var $map  = document.getElementById('locations-map');
     var $list = document.getElementById('locations-list');
 
-    var map = new google.maps.Map($map, {
-      center: new google.maps.LatLng(defaultCoordinates[0], defaultCoordinates[1]),
-      zoom: 4,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
     var mapStyles = [
       {
         "featureType": "all",
         "elementType": "labels",
-        "stylers": [{
-          "visibility": "on"
-        }, {
-          "saturation": "35"
-        }, {
-          "color": "#545554"
-        }]
+        "stylers": [
+          { "visibility" : "on" },
+          { "saturation" : "35" },
+          { "color"      : "#545554" }
+        ]
       }, {
         "featureType": "all",
         "elementType": "labels.text",
-        "stylers": [{
-          "color": "#545554"
-        }, {
-          "visibility": "on"
-        }]
+        "stylers": [
+          { "color"      : "#545554" },
+          { "visibility" : "on" }
+        ]
       }, {
         "featureType": "all",
         "elementType": "labels.text.stroke",
-        "stylers": [{
-          "visibility": "off"
-        }]
+        "stylers": [
+          { "visibility" : "off" }
+        ]
       }, {
         "featureType": "administrative.country",
         "elementType": "all",
-        "stylers": [{
-          "visibility": "simplified"
-        }]
+        "stylers": [
+          { "visibility" : "simplified" }
+        ]
       }, {
         "featureType": "administrative.country",
         "elementType": "geometry",
-        "stylers": [{
-          "visibility": "simplified"
-        }]
+        "stylers": [
+          { "visibility" : "simplified" }
+        ]
       }, {
         "featureType": "administrative.province",
         "elementType": "all",
-        "stylers": [{
-          "visibility": "simplified"
-        }]
+        "stylers": [
+          { "visibility" : "simplified" }
+        ]
       }, {
         "featureType": "administrative.locality",
         "elementType": "all",
-        "stylers": [{
-          "visibility": "simplified"
-        }, {
-          "saturation": "-100"
-        }, {
-          "lightness": "30"
-        }]
+        "stylers": [
+          { "visibility" : "simplified" },
+          { "saturation" : "-100" },
+          { "lightness"  : "30" }
+        ]
       }, {
         "featureType": "administrative.locality",
         "elementType": "labels.text.fill",
-        "stylers": [{
-          "visibility": "on"
-        }]
+        "stylers": [
+          { "visibility": "on" }
+        ]
       }, {
         "featureType": "administrative.locality",
         "elementType": "labels.text.stroke",
-        "stylers": [{
-          "visibility": "on"
-        }, {
-          "color": "#ffffff"
-        }]
+        "stylers": [
+          { "visibility" : "on" },
+          { "color"      : "#ffffff" }
+        ]
       }, {
         "featureType": "administrative.neighborhood",
         "elementType": "all",
-        "stylers": [{
-          "visibility": "off"
-        }]
+        "stylers": [
+          { "visibility" : "off" }
+        ]
       }, {
         "featureType": "landscape",
         "elementType": "all",
-        "stylers": [{
-          "visibility": "simplified"
-        }, {
-          "gamma": "0.00"
-        }, {
-          "lightness": "74"
-        }]
+        "stylers": [
+          { "visibility" : "simplified" },
+          { "gamma"      : "0.00" },
+          { "lightness"  : "74" }
+        ]
       }, {
         "featureType": "landscape",
         "elementType": "geometry",
-        "stylers": [{
-          "color": "#ffffff"
-        }]
+        "stylers": [
+          { "color" : "#ffffff" }
+        ]
       }, {
         "featureType": "poi",
         "elementType": "all",
-        "stylers": [{
-          "visibility": "off"
-        }]
+        "stylers": [
+          { "visibility" : "off" }
+        ]
       }, {
         "featureType": "road",
         "elementType": "geometry",
-        "stylers": [{
-          "visibility": "simplified"
-        }, {
-          "color": "#e21737"
-        }, {
-          "saturation": "-5"
-        }, {
-          "lightness": "30"
-        }, {
-          "gamma": "1.25"
-        }]
+        "stylers": [
+          { "visibility" : "simplified" },
+          { "color"      : "#e21737" },
+          { "saturation" : "-5" },
+          { "lightness"  : "60" },
+          { "gamma"      : "1.5" }
+        ]
       }, {
         "featureType": "road",
         "elementType": "labels",
-        "stylers": [{
-          "visibility": "off"
-        }]
+        "stylers": [
+          { "visibility" : "off" }
+        ]
       }, {
         "featureType": "road",
         "elementType": "labels.text",
-        "stylers": [{
-          "visibility": "on"
-        }]
+        "stylers": [
+          { "visibility" : "on" }
+        ]
       }, {
         "featureType": "road",
         "elementType": "labels.text.fill",
-        "stylers": [{
-          "visibility": "on"
-        }, {
-          "color": "#545554"
-        }]
+        "stylers": [
+          { "visibility" : "on" },
+          { "color"      : "#545554" }
+        ]
       }, {
         "featureType": "road",
         "elementType": "labels.text.stroke",
-        "stylers": [{
-          "visibility": "on"
-        }, {
-          "weight": "0.66"
-        }]
+        "stylers": [
+          { "visibility" : "on" },
+          { "weight"     : "0.66" }
+        ]
       }, {
         "featureType": "transit",
         "elementType": "labels",
-        "stylers": [{
-          "visibility": "simplified"
-        }]
+        "stylers": [
+          { "visibility" : "simplified" }
+        ]
       }, {
         "featureType": "transit",
         "elementType": "labels.icon",
-        "stylers": [{
-          "visibility": "off"
-        }]
+        "stylers": [
+          { "visibility" : "off" }
+        ]
       }, {
         "featureType": "transit.line",
         "elementType": "geometry",
-        "stylers": [{
-          "color": "#ff0000"
-        }, {
-          "lightness": "80"
-        }]
+        "stylers": [
+          { "color"     : "#ff0000" },
+          { "lightness" : "80" }]
       }, {
         "featureType": "transit.station",
         "elementType": "geometry",
-        "stylers": [{
-          "color": "#e5e5e5"
-        }]
+        "stylers": [
+          { "color" : "#e5e5e5" }
+        ]
       }, {
         "featureType": "water",
         "elementType": "geometry",
-        "stylers": [{
-          "color": "#c1c1c1"
-        }]
+        "stylers": [
+          { "color" : "#c1c1c1" }
+        ]
       }, {
         "featureType": "water",
         "elementType": "labels",
-        "stylers": [{
-          "visibility": "off"
-        }]
+        "stylers": [
+          { "visibility": "off" }
+        ]
       }
     ];
 
-    map.setOptions({ styles: mapStyles });
+    var mapZoomLevels = {
+      minimum: 4,
+      maximum: 11
+    };
+
+    var map = new google.maps.Map($map, {
+      center: new google.maps.LatLng(defaultCoordinates[0], defaultCoordinates[1]),
+      zoom: mapZoomLevels.minimum,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      streetViewControl: false,
+      mapTypeControl: false,
+      styles: mapStyles
+    });
 
 
     // =========================================================================
     // Data
     // =========================================================================
     var locationsDataFeed = new storeLocator.StaticDataFeed();
+    console.time('locationsFetch');
+    console.time('locationsParse');
     $.ajax({
       type: 'GET',
-      dataType: 'jsonp',
-      url: 'https://api-jackinthebox.herokuapp.com/locations',
+      dataType: 'json',
+      // url: 'https://api-jackinthebox.herokuapp.com/locations',
+      url: 'http://motherstruck.s3.amazonaws.com/locations-API.json',
       success: function(json){
+        console.timeEnd('locationsFetch');
         var stores = parseStores(json);
         locationsDataFeed.setStores(stores);
+
+        console.timeEnd('locationsParse');
       }
     });
 
@@ -260,8 +252,11 @@
       locationListCount: 20
     });
 
+    // =========================================================================
+    // Marker Clustering
+    // =========================================================================
     var clusters =  new MarkerClusterer(map, [], {
-      maxZoom: 17,
+      maxZoom: (mapZoomLevels.maximum - 1),
       styles: [{
         url: 'https://www.google.com/maps/vt/icon/name=assets/icons/poi/quantum/container_background-2-medium.png,assets/icons/poi/quantum/container-2-medium.png?highlight=ffffff,e21d39,ffffff&scale=2',
         width: 46,
@@ -277,17 +272,36 @@
         Opacity : 0,
         title : store.getDetails().title
       };
+
       marker = new google.maps.Marker(markerOptions);
+
       markercluster = new google.maps.Marker(markerOptions);
       markercluster.setOpacity(1);
       markercluster.setClickable(false);
       clusters.addMarker(markercluster);
+
       return marker;
     };
 
+    // =========================================================================
+    // Event Listeners
+    // =========================================================================
     mapView.addListener('load', function(){
       console.log('THIS IS CALLED AFTER THE MAP CENTERS ON THE GEOLOCATION');
-    })
+    });
+
+    // Re-center and zoom the map when a location has been selected
+    mapView.addListener('selectedStore_changed', function(store){
+      if (store !== null) {
+        var position = store.getLocation();
+        map.panTo(position);
+
+        // Only zoom if it's a zoom in; otherwise just do the pan
+        if (map.getZoom() < mapZoomLevels.maximum) {
+          map.setZoom(mapZoomLevels.maximum);
+        }
+      }
+    });
   };
 
   window.onload = initialize;

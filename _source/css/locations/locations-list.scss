@@ -13,7 +13,8 @@
       border-left: 0 solid $red;
       transition: border 0.2s ease;
 
-      &:hover{
+      &:hover,
+      &.highlighted{
         cursor: pointer;
         border-left-width: 10px;
       }
