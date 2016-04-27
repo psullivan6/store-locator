@@ -1,6 +1,7 @@
 var config  = require('../config');
 var express = require('express');
 var gulp    = require('gulp');
+var pug     = require('pug');
 var utility = require('gulp-util');
 require('colors');
 

@@ -13,10 +13,10 @@ module.exports = {
     },
     html: {
       source:  [
-        sourceDirectory  + '/*.jade',
-        '!' + sourceDirectory + '/_layout.jade'
+        sourceDirectory  + '/*.pug',
+        '!' + sourceDirectory + '/_layout.pug'
       ],
-      watch:   sourceDirectory  + '/**/*.jade',
+      watch:   sourceDirectory  + '/**/*.pug',
       release: compiledDirectory,
       testing: sourceDirectory
     },

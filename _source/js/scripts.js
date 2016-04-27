@@ -217,22 +217,16 @@
 
 
     // =========================================================================
-    // Data
+    // Locations Data Feed
     // =========================================================================
     var locationsDataFeed = new storeLocator.StaticDataFeed();
-    console.time('locationsFetch');
-    console.time('locationsParse');
     $.ajax({
       type: 'GET',
-      dataType: 'json',
-      // url: 'https://api-jackinthebox.herokuapp.com/locations',
-      url: 'http://motherstruck.s3.amazonaws.com/locations-API.json',
+      dataType: 'jsonp',
+      url: 'https://api-jackinthebox.herokuapp.com/locations',
       success: function(json){
-        console.timeEnd('locationsFetch');
         var stores = parseStores(json);
         locationsDataFeed.setStores(stores);
-
-        console.timeEnd('locationsParse');
       }
     });
 
@@ -301,6 +295,8 @@
           map.setZoom(mapZoomLevels.maximum);
         }
       }
+
+      this.refreshView();
     });
   };
 
