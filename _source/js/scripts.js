@@ -16,7 +16,8 @@
         var store  = new storeLocator.Store('location_' + locationData.Location, latLng, null, {
           address: fullAddress,
           // icon: '/images/map-marker.png'
-          icon: 'https://www.google.com/maps/vt/icon/name=assets/icons/poi/quantum/container_background-2-medium.png,assets/icons/poi/quantum/container-2-medium.png,assets/icons/poi/quantum/restaurant-2-medium.png?highlight=ffffff,e21d39,ffffff&color=ff000000&scale=1'
+          icon: 'https://www.google.com/maps/vt/icon/name=assets/icons/poi/quantum/container_background-2-medium.png,assets/icons/poi/quantum/container-2-medium.png,assets/icons/poi/quantum/restaurant-2-medium.png?highlight=ffffff,e21d39,ffffff&color=ff000000&scale=1',
+          locationID: locationData.Location
         });
 
         stores.push(store);
@@ -29,6 +30,30 @@
       var locationsSearchValue = document.getElementById('locations-search--input').value;
 
       listView.searchPosition(locationsSearchValue);
+    };
+
+    function setClusters(dataFeed){
+      var markers = [];
+      dataFeed.getStores(map.getBounds(), null, function(stores){
+        for (var i = 0, storesLength = stores.length; i < storesLength; i++) {
+          var marker = stores[i].getMarker();
+
+          marker.setIcon('https://www.google.com/maps/vt/icon/name=assets/icons/poi/quantum/container_background-2-medium.png,assets/icons/poi/quantum/container-2-medium.png,assets/icons/poi/quantum/restaurant-2-medium.png?highlight=ffffff,e21d39,ffffff&color=ff000000&scale=1');
+          markers.push(marker);
+        }
+      });
+
+      var clusters = new MarkerClusterer(map, markers, {
+        maxZoom: (mapZoomLevels.maximum - 1),
+        styles: [{
+          url: 'https://www.google.com/maps/vt/icon/name=assets/icons/poi/quantum/container_background-2-medium.png,assets/icons/poi/quantum/container-2-medium.png?highlight=ffffff,e21d39,ffffff&scale=2',
+          width: 46,
+          height: 46,
+          textColor: 'white'
+        }],
+        gridSize: 50
+      });
+
     };
 
     // =========================================================================
@@ -227,6 +252,7 @@
       success: function(json){
         var stores = parseStores(json);
         locationsDataFeed.setStores(stores);
+        // setClusters(locationsDataFeed);
       }
     });
 
@@ -249,20 +275,23 @@
     // =========================================================================
     // Marker Clustering
     // =========================================================================
-    var clusters =  new MarkerClusterer(map, [], {
+    var clusters = new MarkerClusterer(map, [], {
       maxZoom: (mapZoomLevels.maximum - 1),
       styles: [{
         url: 'https://www.google.com/maps/vt/icon/name=assets/icons/poi/quantum/container_background-2-medium.png,assets/icons/poi/quantum/container-2-medium.png?highlight=ffffff,e21d39,ffffff&scale=2',
         width: 46,
         height: 46,
         textColor: 'white'
-      }]
+      }],
+      gridSize: 50
     });
 
+    var clusterMarkersList = [];
     mapView.createMarker = function (store) {
       var markerOptions = {
         position : store.getLocation(),
         icon : store.getDetails().icon,
+        locationID: store.getDetails().locationID,
         Opacity : 0,
         title : store.getDetails().title
       };
@@ -290,13 +319,31 @@
         var position = store.getLocation();
         map.panTo(position);
 
+        var marker = store.getMarker();
+
+        // [TODO] Figure out how to unset this icon when it's no longer the
+        // selected store. Also, make it the correct icon
+
+
+        var clusterMarkers = clusters.getMarkers();
+        for (var i = 0, clusterMarkersLength = clusterMarkers.length; i < clusterMarkersLength; i++) {
+          var clusterMarker = clusterMarkers[i];
+
+          if (clusterMarker.locationID === marker.locationID) {
+            clusterMarker.setIcon('https://www.google.com/maps/vt/icon/name=assets/icons/poi/quantum/container_background-2-medium.png,assets/icons/poi/quantum/container-2-medium.png,assets/icons/poi/quantum/restaurant-2-medium.png?highlight=ffffff,00ffff,ffffff&color=ff000000&scale=1');
+
+            // [TODO] Is a break; the right method? Should we use a return?
+            // basically once the correct marker is found, nothing else is
+            // needed
+            break;
+          }
+        }
+
         // Only zoom if it's a zoom in; otherwise just do the pan
         if (map.getZoom() < mapZoomLevels.maximum) {
           map.setZoom(mapZoomLevels.maximum);
         }
       }
-
-      this.refreshView();
     });
   };
 
